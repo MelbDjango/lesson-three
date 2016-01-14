@@ -1,3 +1,9 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 
-# Create your tests here.
+
+class ViewTests(TestCase):
+
+    def test_entries_available(self):
+        c = Client()
+        response = c.get('/entries/')
+        self.assertEqual(response.status_code, 200)
